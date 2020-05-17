@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Covid 19 Cases</string>
+    <string name="text_test">API_URL</string>
+    <string name="labelGlobal">Global</string>
+    <string name="labelAllstates">All</string>
+    <string name="labelState">State</string>
+    <string name="labelStatistics">Covid 19 Bulletin</string>
+    <string name="labelChooseState">Choose State</string>
+    <string name="labelTitleTotalCasesBrasil">Total cases in Brazil</string>
+    <string name="labelTitleTotalCasesWorld">World total cases</string>
+    <string name="cantConnectToHost">Coudn\'t connect to server</string>
+
+
+    <string name="noInternetPermissionWarning">You need to change app permission to allow internet connection</string>
+    <string name="labelLocal">Local</string>
+    <string name="labelConfirmed">Confirmed</string>
+    <string name="labelRecovered">Recovered</string>
+    <string name="labelDeaths">Deaths</string>
+</resources>

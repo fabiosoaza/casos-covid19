@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Casos Covid 19</string>
+    <string name="text_test">API_URL</string>
+    <string name="labelGlobal">Mundo</string>
+    <string name="labelAllstates">Todos</string>
+    <string name="labelState">Estado</string>
+    <string name="noInternetPermissionWarning">Você precisa habilitar as permissões de internet para que os resultados possam ser exibidos.</string>
+    <string name="cantConnectToHost">Não foi possível buscar os dados no servidor. Por favor tente mais tarde.</string>
+
+
+    <string name="labelChooseState">Escolha um estado</string>
+    <string name="labelTitleTotalCasesBrasil">Total de Casos no Brasil</string>
+    <string name="labelTitleTotalCasesWorld">Total de casos no mundo</string>
+
+
+    <string name="labelStatistics">Estatísticas Covid 19</string>
+
+    <string name="labelLocal">Local</string>
+    <string name="labelConfirmed">Confirmados</string>
+    <string name="labelRecovered">Recuperados</string>
+    <string name="labelDeaths">Mortos</string>
+
+</resources>
