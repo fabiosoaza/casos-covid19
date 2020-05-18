@@ -6,6 +6,10 @@ import com.fasterxml.jackson.databind.SerializationFeature
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import com.github.fabiosoaza.casos.covid19.BuildConfig
+import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.dto.Casos
+import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.dto.CasosPais
+import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.dto.CasosTodosUF
+import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.dto.CasosUF
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -15,7 +19,7 @@ import retrofit2.http.Path
 import java.util.concurrent.TimeUnit
 
 
-interface Covid19BrazilaApiClient {
+interface Covid19BrazilApiClient {
 
 
     @GET("report/v1")
@@ -36,7 +40,7 @@ interface Covid19BrazilaApiClient {
 
     companion object Builder {
 
-        fun build(): Covid19BrazilaApiClient {
+        fun build(): Covid19BrazilApiClient {
 
             val objectMapper  = ObjectMapper()
             objectMapper.registerModule(JavaTimeModule())
@@ -55,7 +59,7 @@ interface Covid19BrazilaApiClient {
                 .client(okHttpClient)
                 .build()
 
-            return retrofit.create(Covid19BrazilaApiClient::class.java)
+            return retrofit.create(Covid19BrazilApiClient::class.java)
 
         }
     }

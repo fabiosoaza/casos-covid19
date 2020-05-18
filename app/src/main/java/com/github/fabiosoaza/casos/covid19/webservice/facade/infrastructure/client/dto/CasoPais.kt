@@ -1,4 +1,4 @@
-package com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client
+package com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.dto
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import java.util.*

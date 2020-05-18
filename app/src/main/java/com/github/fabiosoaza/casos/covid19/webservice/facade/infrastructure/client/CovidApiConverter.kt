@@ -1,5 +1,10 @@
 package com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client
 
+import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.dto.Casos
+import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.dto.CasosPais
+import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.dto.CasosTodosUF
+import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.dto.CasosUF
+
 class CovidApiConverter {
 
     fun casosTodosUf(casosTodosUF: CasosTodosUF?): List<com.github.fabiosoaza.casos.covid19.domain.CasosCovid19> {

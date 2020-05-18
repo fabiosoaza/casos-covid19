@@ -1,12 +1,12 @@
 package com.github.fabiosoaza.casos.covid19.webservice.facade
 
-import com.github.fabiosoaza.casos.covid19.DateTimeUtils
 import com.github.fabiosoaza.casos.covid19.domain.CasosCovid19
-import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.Covid19BrazilaApiClient
+import com.github.fabiosoaza.casos.covid19.util.DateTimeUtils
+import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.Covid19BrazilApiClient
 import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.CovidApiConverter
 import java.util.*
 
- class Covid19Facade (client: Covid19BrazilaApiClient) {
+class Covid19Facade (client: Covid19BrazilApiClient) {
 
     private val client = client
 

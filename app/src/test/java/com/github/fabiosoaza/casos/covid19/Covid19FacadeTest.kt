@@ -1,6 +1,6 @@
 package com.github.fabiosoaza.casos.covid19
 
-import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.Covid19BrazilaApiClient
+import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.Covid19BrazilApiClient
 import com.github.fabiosoaza.casos.covid19.webservice.facade.Covid19Facade
 import org.junit.Test
 import java.util.*
@@ -10,7 +10,7 @@ class Covid19FacadeTest {
 
     @Test
     fun deveListarOsCasosParaTodosOsEstados() {
-        val client = Covid19BrazilaApiClient.build()
+        val client = Covid19BrazilApiClient.build()
         val service =
             Covid19Facade(
                 client
@@ -20,7 +20,7 @@ class Covid19FacadeTest {
 
     @Test
     fun deveListarOsCasosParaUmUf() {
-        val client = Covid19BrazilaApiClient.build()
+        val client = Covid19BrazilApiClient.build()
         val service =
             Covid19Facade(
                 client
@@ -36,7 +36,7 @@ class Covid19FacadeTest {
         cal.set(Calendar.MONTH, Calendar.MAY)
         cal.set(Calendar.YEAR, 2020)
 
-        val client = Covid19BrazilaApiClient.build()
+        val client = Covid19BrazilApiClient.build()
         val service =
             Covid19Facade(
                 client
@@ -48,7 +48,7 @@ class Covid19FacadeTest {
     @Test
     fun deveListarosCasosPorPais() {
 
-        val client = Covid19BrazilaApiClient.build()
+        val client = Covid19BrazilApiClient.build()
         val service =
             Covid19Facade(
                 client
@@ -60,7 +60,7 @@ class Covid19FacadeTest {
     @Test
     fun deveListarCasosMundo() {
 
-        val client = Covid19BrazilaApiClient.build()
+        val client = Covid19BrazilApiClient.build()
         val service =
             Covid19Facade(
                 client

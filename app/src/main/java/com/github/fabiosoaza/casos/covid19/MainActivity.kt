@@ -11,7 +11,7 @@ import com.github.fabiosoaza.casos.covid19.domain.UF
 import com.github.fabiosoaza.casos.covid19.ui.*
 import com.github.fabiosoaza.casos.covid19.util.ResourceUtil
 import com.github.fabiosoaza.casos.covid19.webservice.facade.Covid19Facade
-import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.Covid19BrazilaApiClient
+import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.Covid19BrazilApiClient
 import jrizani.jrspinner.JRSpinner
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     private var casos = mutableListOf<CasosCovid19>()
     private var casosAdapter = ListCasosCovid19Adapter(casos)
 
-    private var covid19Facade = Covid19Facade(Covid19BrazilaApiClient.build())
+    private var covid19Facade = Covid19Facade(Covid19BrazilApiClient.build())
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

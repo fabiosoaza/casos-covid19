@@ -1,4 +1,4 @@
-package com.github.fabiosoaza.casos.covid19
+package com.github.fabiosoaza.casos.covid19.util
 
 import java.text.SimpleDateFormat
 import java.time.format.DateTimeFormatter
