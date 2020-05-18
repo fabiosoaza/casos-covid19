@@ -1,7 +1,7 @@
 package com.github.fabiosoaza.casos.covid19.webservice.facade
 
 import com.github.fabiosoaza.casos.covid19.DateTimeUtils
-import com.github.fabiosoaza.casos.covid19.domain.Casos
+import com.github.fabiosoaza.casos.covid19.domain.CasosCovid19
 import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.Covid19BrazilaApiClient
 import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.CovidApiConverter
 import java.util.*
@@ -10,7 +10,7 @@ import java.util.*
 
     private val client = client
 
-   fun listarCasosTodosEstados(): List<Casos>{
+   fun listarCasosTodosEstados(): List<CasosCovid19>{
 
          val result = client.listarCasosTodosEstados().execute()
          val body = result.body()
@@ -19,13 +19,13 @@ import java.util.*
              .casosTodosUf(result.body()).sortedBy { item -> item.local }
      }
 
-    fun listarCasosMundo(): List<Casos> {
+    fun listarCasosMundo(): List<CasosCovid19> {
         val result = client.buscarCasosMundo().execute()
         return CovidApiConverter()
             .casosMundo(result.body())
     }
 
-     fun buscarCasosEstado(uf: String): Casos? {
+     fun buscarCasosEstado(uf: String): CasosCovid19? {
          val result = client.buscarCasosEstado(uf).execute()
          val body = result.body()
          return CovidApiConverter()
@@ -33,7 +33,7 @@ import java.util.*
 
      }
 
-     fun buscarCasosTodosEstadosPorData(data:Date): List<Casos> {
+     fun buscarCasosTodosEstadosPorData(data:Date): List<CasosCovid19> {
 
          val data = DateTimeUtils.format(data, "yyyyMMdd")
          val result = client.listarCasosTodosEstadosData(data).execute()
@@ -42,7 +42,7 @@ import java.util.*
              .casosTodosUf(result.body()).sortedBy { item -> item.local }
      }
 
-     fun buscarCasosPais(pais: String): List<Casos> {
+     fun buscarCasosPais(pais: String): List<CasosCovid19> {
          val result = client.buscarCasosPais(pais).execute()
          return CovidApiConverter()
              .casosPais(result.body())

@@ -6,18 +6,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.fabiosoaza.casos.covid19.R
-import com.github.fabiosoaza.casos.covid19.domain.Casos
+import com.github.fabiosoaza.casos.covid19.domain.CasosCovid19
 import com.github.fabiosoaza.casos.covid19.util.CasosCovidUtil
 import kotlinx.android.synthetic.main.caso_local_item.view.*
-import kotlinx.android.synthetic.main.caso_local_item_header.view.*
-import java.text.MessageFormat
 
-class CasosAdapter(private val casos: MutableList<Casos>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ListCasosCovid19Adapter(private val casos: MutableList<CasosCovid19>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val TYPE_HEADER: Int = 0
     private val TYPE_ITEM: Int = 1
 
-    fun update(novosCasos: List<Casos>){
+    fun update(novosCasos: List<CasosCovid19>){
         casos.clear()
         casos.addAll(novosCasos)
     }
@@ -53,30 +51,24 @@ class CasosAdapter(private val casos: MutableList<Casos>) : RecyclerView.Adapter
     }
 
     override fun onBindViewHolder(viewHolder: RecyclerView.ViewHolder, position: Int) {
-        if (viewHolder is CasosHeaderViewHolder) {
-            val holder : CasosHeaderViewHolder? = viewHolder as CasosHeaderViewHolder?
-        }
-        else{
-            val holder : CasosItemViewHolder? = viewHolder as CasosItemViewHolder?
-                var caso = casos[position - 1]
-                updateItemHolder(holder, caso)
-                CasosCovidUtil.updateContentDecriptionSummary(
-                    holder?.itemView?.context,
-                    holder?.txtLocal,
-                     caso,
-                    holder?.itemView?.context?.getString(R.string.contentDescriptionItemList)
+        if (viewHolder is CasosItemViewHolder) {
+            val holder : CasosItemViewHolder? = viewHolder
+            val caso = casos[position - 1]
+            updateItemHolder(holder, caso)
+            CasosCovidUtil.updateContentDecriptionSummary(
+                holder?.itemView?.context,
+                holder?.viewGroupCaseByStateItem,
+                caso,
+                holder?.itemView?.context?.getString(R.string.contentDescriptionItemList)
             )
-
-
         }
-
     }
 
-    private fun updateItemHolder(holder: CasosItemViewHolder?, caso: Casos  ) {
-        updateTextViewCounter( holder?.txtLocal, caso?.local)
-        updateTextViewCounter( holder?.txtConfirmados, caso?.confirmed)
-        updateTextViewCounter( holder?.txtRecuperados, caso?.recovered)
-        updateTextViewCounter( holder?.txtMortes, caso?.deaths)
+    private fun updateItemHolder(holder: CasosItemViewHolder?, caso: CasosCovid19  ) {
+        updateTextViewCounter( holder?.txtLocal, caso.local)
+        updateTextViewCounter( holder?.txtConfirmados, caso.confirmed)
+        updateTextViewCounter( holder?.txtRecuperados, caso.recovered)
+        updateTextViewCounter( holder?.txtMortes, caso.deaths)
     }
 
     private fun updateTextViewCounter(viewTotal: TextView?, value: Int? ) {
@@ -94,13 +86,13 @@ class CasosAdapter(private val casos: MutableList<Casos>) : RecyclerView.Adapter
         var txtConfirmados: TextView = itemView.txtConfirmados
         var txtRecuperados: TextView = itemView.txtRecuperados
         var txtMortes: TextView = itemView.txtMortos
+        var viewGroupCaseByStateItem: View = itemView.viewGroupCaseByStateItem
+
+
     }
 
     class CasosHeaderViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var txtHeaderLocal: TextView = itemView.txtHeaderLocal
-        var txtHeaderConfirmados: TextView = itemView.txtHeaderConfirmados
-        var txtHeaderRecuperados: TextView = itemView.txtHeaderRecuperados
-        var txtHeaderMortos: TextView = itemView.txtHeaderMortos
+
 
     }
 

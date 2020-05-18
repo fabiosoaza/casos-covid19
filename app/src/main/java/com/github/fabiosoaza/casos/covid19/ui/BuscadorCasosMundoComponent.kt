@@ -1,10 +1,10 @@
 package com.github.fabiosoaza.casos.covid19.ui
 
+import android.view.View
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.ComponentActivity
 import com.github.fabiosoaza.casos.covid19.R
-import com.github.fabiosoaza.casos.covid19.domain.Casos
+import com.github.fabiosoaza.casos.covid19.domain.CasosCovid19
 import com.github.fabiosoaza.casos.covid19.util.CasosCovidUtil
 import com.github.fabiosoaza.casos.covid19.util.UiUtil
 import com.github.fabiosoaza.casos.covid19.webservice.facade.Covid19Facade
@@ -12,23 +12,26 @@ import java.net.SocketTimeoutException
 
 class BuscadorCasosMundoComponent(private var view: ComponentActivity, private var facade: Covid19Facade, private var barraProgresso:ProgressBarComponent) : BuscadorCasosComponent{
 
-    private val viewTotalConfirmed: TextView = view?.findViewById<TextView>(R.id.txtTotalConfirmedWorld)
-    private val viewTotalRecovered: TextView = view?.findViewById<TextView>(R.id.txtTotalRecoveredWorld)
-    private val viewTotalDeaths: TextView = view?.findViewById<TextView>(R.id.txtTotalDeathsWorld)
+    private val viewTotalConfirmed: TextView = view.findViewById<TextView>(R.id.txtTotalConfirmedWorld)
+    private val viewTotalRecovered: TextView = view.findViewById<TextView>(R.id.txtTotalRecoveredWorld)
+    private val viewTotalDeaths: TextView = view.findViewById<TextView>(R.id.txtTotalDeathsWorld)
+    private val viewGroupSummaryWorld = view.findViewById<View>(R.id.viewGroupSummaryWorld)
 
 
 
-    override fun buscar() : List<Casos>{
+
+
+    override fun buscar() : List<CasosCovid19>{
         if (!CasosCovidUtil.hasConnection(view)) {
             UiUtil.message(view,  view.getString(R.string.noInternetPermissionWarning))
-            return mutableListOf<Casos>()
+            return mutableListOf<CasosCovid19>()
         }
 
         return try {
             facade.listarCasosMundo()
         }catch(ex: SocketTimeoutException ){
             UiUtil.message(view,  view.getString(R.string.cantConnectToHost))
-            mutableListOf<Casos>()
+            mutableListOf<CasosCovid19>()
         }
     }
 
@@ -42,18 +45,18 @@ class BuscadorCasosMundoComponent(private var view: ComponentActivity, private v
 
     }
 
-    override fun atualizarResultados(casos: List<Casos>){
+    override fun atualizarResultados(casos: List<CasosCovid19>){
         atualizarTotaisMundo(casos)
     }
 
-    private fun atualizarTotaisMundo(casos: List<Casos>) {
+    private fun atualizarTotaisMundo(casos: List<CasosCovid19>) {
         val total = CasosCovidUtil.somarCasos(casos,  view.getString(R.string.labelWorld))
         updateTextViewCounter(viewTotalConfirmed, total?.confirmed)
         updateTextViewCounter(viewTotalRecovered, total?.recovered)
         updateTextViewCounter(viewTotalDeaths, total?.deaths)
         CasosCovidUtil.updateContentDecriptionSummary(
             view.baseContext,
-            viewTotalConfirmed,
+            viewGroupSummaryWorld,
             total,
             view.baseContext.getString(R.string.contentDescriptionTotalCasesSummary)
         )

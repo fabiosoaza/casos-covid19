@@ -1,11 +1,11 @@
 package com.github.fabiosoaza.casos.covid19.ui
 
-import com.github.fabiosoaza.casos.covid19.domain.Casos
+import com.github.fabiosoaza.casos.covid19.domain.CasosCovid19
 
 interface BuscadorCasosComponent {
 
-    fun buscar() : List<Casos>
-    fun atualizarResultados(casos: List<Casos>)
+    fun buscar() : List<CasosCovid19>
+    fun atualizarResultados(casos: List<CasosCovid19>)
     fun showProgress(show: Boolean)
 
 

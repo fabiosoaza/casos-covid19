@@ -44,10 +44,12 @@ class UiUtil {
 
         fun sendTalkBackMessage(context: Context, message: String){
             val accessibilityManager = context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
-            val accessibilityEvent = AccessibilityEvent.obtain()
-            accessibilityEvent.eventType = AccessibilityEvent.TYPE_ANNOUNCEMENT
-            accessibilityEvent.text.add(message)
-            accessibilityManager?.sendAccessibilityEvent(accessibilityEvent)
+            if (accessibilityManager.isEnabled) {
+                val accessibilityEvent = AccessibilityEvent.obtain()
+                accessibilityEvent.eventType = AccessibilityEvent.TYPE_ANNOUNCEMENT
+                accessibilityEvent.text.add(message)
+                accessibilityManager.sendAccessibilityEvent(accessibilityEvent)
+            }
 
         }
 

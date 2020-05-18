@@ -2,9 +2,10 @@ package com.github.fabiosoaza.casos.covid19.util
 
 import android.content.Context
 import android.net.ConnectivityManager
+import android.view.View
 import android.widget.TextView
 import com.github.fabiosoaza.casos.covid19.R
-import com.github.fabiosoaza.casos.covid19.domain.Casos
+import com.github.fabiosoaza.casos.covid19.domain.CasosCovid19
 import com.github.fabiosoaza.casos.covid19.domain.UF
 import java.text.MessageFormat
 
@@ -17,9 +18,9 @@ class CasosCovidUtil {
             return info != null && info.isConnected
         }
 
-        fun somarCasos(casos: List<Casos>?, local:String?=null) : Casos? {
+        fun somarCasos(casos: List<CasosCovid19>?, local:String?=null) : CasosCovid19? {
             if(casos==null || casos.isEmpty()){
-                return Casos(
+                return CasosCovid19(
                     local = local,
                     cases =  0,
                     confirmed = 0,
@@ -27,10 +28,10 @@ class CasosCovidUtil {
                     recovered = 0
                 )
             }
-            val acumulado = casos.groupingBy { 0 }
-                ?.aggregate { _, accumulator: Casos?, element, first ->
+            return casos.groupingBy { 0 }
+                ?.aggregate { _, accumulator: CasosCovid19?, element, first ->
                     if (first)
-                        Casos(
+                        CasosCovid19(
                             local = local ,
                             cases = element.cases,
                             confirmed = element.confirmed,
@@ -38,15 +39,21 @@ class CasosCovidUtil {
                             recovered = element.recovered
                         )
                     else
-                        Casos(
-                            local = local ?: element?.local,
-                            cases = intOrNull(element?.cases) + intOrNull(accumulator?.cases),
-                            confirmed = intOrNull(element?.confirmed) + intOrNull(accumulator?.confirmed),
-                            deaths = intOrNull(element?.deaths) + intOrNull(accumulator?.deaths),
-                            recovered = intOrNull(element?.recovered) + intOrNull(accumulator?.recovered)
+                        CasosCovid19(
+                            local = local ?: element.local,
+                            cases =    sumOrNull(element.cases, accumulator?.cases),
+                            confirmed = sumOrNull(element.confirmed, accumulator?.confirmed),
+                            deaths = sumOrNull(element.deaths, accumulator?.deaths),
+                            recovered = sumOrNull(element.recovered, accumulator?.recovered)
                         )
                 }[0]
-            return acumulado
+        }
+
+        private fun sumOrNull(value1: Int?, value2:Int? ) : Int?{
+            if(value1 == null && value2 == null){
+                return null
+            }
+            return defaultZeroIfNull(value1) + defaultZeroIfNull(value2)
         }
 
        fun getUFByNomeEstado(context:Context, nome:String): UF {
@@ -87,8 +94,8 @@ class CasosCovidUtil {
 
         fun updateContentDecriptionSummary(
             context: Context?,
-            textView: TextView?,
-            caso: Casos?,
+            textView: View?,
+            caso: CasosCovid19?,
             templateMessage: String?
         ) {
             val description = MessageFormat.format(
@@ -102,7 +109,7 @@ class CasosCovidUtil {
         }
 
 
-        fun getNoRecordLabelIfNull(context:Context?, value:Int?) : String? {
+        private fun getNoRecordLabelIfNull(context:Context?, value:Int?) : String? {
             return if (value == null) {
                 getNoRecordLabelIfNullOrDash(context, "-")
             } else {
@@ -119,7 +126,7 @@ class CasosCovidUtil {
 
         }
 
-        private fun intOrNull(value : Int?) : Int{
+        private fun defaultZeroIfNull(value : Int?) : Int{
             return value ?: 0
         }
     }

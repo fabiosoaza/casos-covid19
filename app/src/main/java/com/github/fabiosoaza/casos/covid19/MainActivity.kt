@@ -6,7 +6,7 @@ import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.github.fabiosoaza.casos.covid19.domain.Casos
+import com.github.fabiosoaza.casos.covid19.domain.CasosCovid19
 import com.github.fabiosoaza.casos.covid19.domain.UF
 import com.github.fabiosoaza.casos.covid19.ui.*
 import com.github.fabiosoaza.casos.covid19.util.ResourceUtil
@@ -20,8 +20,8 @@ class MainActivity : AppCompatActivity() {
     private var asyncTaskBrasil: BuscadorCasosAyncTask? = null
     private var asyncTaskMundo: BuscadorCasosAyncTask? = null
 
-    private var casos = mutableListOf<Casos>()
-    private var casosAdapter = CasosAdapter(casos)
+    private var casos = mutableListOf<CasosCovid19>()
+    private var casosAdapter = ListCasosCovid19Adapter(casos)
 
     private var covid19Facade = Covid19Facade(Covid19BrazilaApiClient.build())
 
