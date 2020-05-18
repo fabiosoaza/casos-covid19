@@ -1,12 +1,13 @@
 package com.github.fabiosoaza.casos.covid19.util
 
 import android.animation.Animator
-
 import android.animation.AnimatorListenerAdapter
+import android.content.Context
 import android.view.View
+import android.view.accessibility.AccessibilityEvent
+import android.view.accessibility.AccessibilityManager
 import android.widget.Toast
 import androidx.activity.ComponentActivity
-import com.github.fabiosoaza.casos.covid19.R
 
 
 class UiUtil {
@@ -40,6 +41,19 @@ class UiUtil {
 
         }
 
+
+        fun sendTalkBackMessage(context: Context, message: String){
+            val accessibilityManager = context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
+            val accessibilityEvent = AccessibilityEvent.obtain()
+            accessibilityEvent.eventType = AccessibilityEvent.TYPE_ANNOUNCEMENT
+            accessibilityEvent.text.add(message)
+            accessibilityManager?.sendAccessibilityEvent(accessibilityEvent)
+
+        }
+
     }
+
+
+
 
 }

@@ -47,11 +47,19 @@ class BuscadorCasosMundoComponent(private var view: ComponentActivity, private v
     }
 
     private fun atualizarTotaisMundo(casos: List<Casos>) {
-        val total = CasosCovidUtil.somarCasos(casos, "")
+        val total = CasosCovidUtil.somarCasos(casos,  view.getString(R.string.labelWorld))
         updateTextViewCounter(viewTotalConfirmed, total?.confirmed)
         updateTextViewCounter(viewTotalRecovered, total?.recovered)
         updateTextViewCounter(viewTotalDeaths, total?.deaths)
+        CasosCovidUtil.updateContentDecriptionSummary(
+            view.baseContext,
+            viewTotalConfirmed,
+            total,
+            view.baseContext.getString(R.string.contentDescriptionTotalCasesSummary)
+        )
     }
+
+
 
     private fun updateTextViewCounter(viewTotalConfirmed1: TextView, confirmed: Int? ) {
         viewTotalConfirmed1.text = confirmed?.toString() ?: "-"

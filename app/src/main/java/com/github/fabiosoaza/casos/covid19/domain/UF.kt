@@ -34,7 +34,11 @@ enum class UF (val sigla: String) {
         fun siglas() : List<String>{
             return enumValues<UF>().map { item -> item.sigla }.sorted()
         }
+
+
     }
+
+
 
 
 }

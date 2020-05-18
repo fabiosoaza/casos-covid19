@@ -30,7 +30,7 @@ class BuscadorCasosBrasilComponent(
             UiUtil.message(view, view.getString(R.string.noInternetPermissionWarning))
             return mutableListOf<Casos>()
         }
-        val localSelecionado = viewLocalSelection.text.toString()
+        val localSelecionado = localSelecionado()
         return try {
             if (localSelecionado == labelAllstates || localSelecionado == "") {
                 listarTodosEstados()
@@ -44,9 +44,13 @@ class BuscadorCasosBrasilComponent(
 
     }
 
+    private fun localSelecionado() = viewLocalSelection.text.toString()
+
     private fun buscarEstado(localSelecionado: String): MutableList<Casos> {
         val list = mutableListOf<Casos>()
-        val element = facade.buscarCasosEstado(localSelecionado.toLowerCase())
+        val ufByNomeEstado = CasosCovidUtil.getUFByNomeEstado(view, localSelecionado)
+        val uf = ufByNomeEstado.sigla.toLowerCase()
+        val element = facade.buscarCasosEstado(uf)
         if (element != null) {
             list.add(element)
         }
@@ -74,14 +78,26 @@ class BuscadorCasosBrasilComponent(
     }
 
     private fun atualizarTotaisBrasil(casos: List<Casos>) {
-        val total = CasosCovidUtil.somarCasos(casos, "")
+        val local = if (casos.size > 1) {
+            view.getString(R.string.labelBrazil)
+        } else {
+            localSelecionado()
+        }
+        val total = CasosCovidUtil.somarCasos(casos, local)
         updateTextViewCounter(viewTotalConfirmed, total?.confirmed)
         updateTextViewCounter(viewTotalRecovered, total?.recovered)
         updateTextViewCounter(viewTotalDeaths, total?.deaths)
+        CasosCovidUtil.updateContentDecriptionSummary(
+            view.baseContext,
+            viewTotalConfirmed,
+            total,
+            view.baseContext.getString(R.string.contentDescriptionTotalCasesSummary)
+        )
+
     }
 
-    private fun updateTextViewCounter(viewTotalConfirmed1: TextView, confirmed: Int?) {
-        viewTotalConfirmed1.text = confirmed?.toString() ?: "-"
+    private fun updateTextViewCounter(textView: TextView, confirmed: Int?) {
+        textView.text = confirmed?.toString() ?: "-"
     }
 
 

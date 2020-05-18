@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.fabiosoaza.casos.covid19.domain.Casos
 import com.github.fabiosoaza.casos.covid19.domain.UF
 import com.github.fabiosoaza.casos.covid19.ui.*
+import com.github.fabiosoaza.casos.covid19.util.ResourceUtil
 import com.github.fabiosoaza.casos.covid19.webservice.facade.Covid19Facade
 import com.github.fabiosoaza.casos.covid19.webservice.facade.infrastructure.client.Covid19BrazilaApiClient
 import jrizani.jrspinner.JRSpinner
@@ -79,14 +80,24 @@ class MainActivity : AppCompatActivity() {
         val mJRSpinner: JRSpinner = findViewById<JRSpinner>(R.id.JRSpinner)
         val all = mutableListOf<String>()
         all.add(getString(R.string.labelAllstates))
-        all.addAll(UF.siglas())
+
+        val estados : List<String> = UF.siglas().map { uf ->
+            val resourceValue = ResourceUtil.getStringResourceByName(this, "label$uf")
+            resourceValue
+
+        }.filterNotNull()
+
+        all.addAll(estados)
+
+
+
 
         val locais = all.toTypedArray<String>()
 
         mJRSpinner.setItems(locais)
-        mJRSpinner.setExpandTint(R.color.jrspinner_color_default)
 
         mJRSpinner.setOnItemClickListener {
+
             carregarDadosBrasil()
         }
 

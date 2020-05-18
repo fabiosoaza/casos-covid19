@@ -7,8 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.fabiosoaza.casos.covid19.R
 import com.github.fabiosoaza.casos.covid19.domain.Casos
+import com.github.fabiosoaza.casos.covid19.util.CasosCovidUtil
 import kotlinx.android.synthetic.main.caso_local_item.view.*
 import kotlinx.android.synthetic.main.caso_local_item_header.view.*
+import java.text.MessageFormat
 
 class CasosAdapter(private val casos: MutableList<Casos>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
@@ -58,6 +60,14 @@ class CasosAdapter(private val casos: MutableList<Casos>) : RecyclerView.Adapter
             val holder : CasosItemViewHolder? = viewHolder as CasosItemViewHolder?
                 var caso = casos[position - 1]
                 updateItemHolder(holder, caso)
+                CasosCovidUtil.updateContentDecriptionSummary(
+                    holder?.itemView?.context,
+                    holder?.txtLocal,
+                     caso,
+                    holder?.itemView?.context?.getString(R.string.contentDescriptionItemList)
+            )
+
+
         }
 
     }
@@ -69,12 +79,12 @@ class CasosAdapter(private val casos: MutableList<Casos>) : RecyclerView.Adapter
         updateTextViewCounter( holder?.txtMortes, caso?.deaths)
     }
 
-    private fun updateTextViewCounter(viewTotalConfirmed1: TextView?, value: Int? ) {
-        viewTotalConfirmed1?.text = value?.toString() ?: "-"
+    private fun updateTextViewCounter(viewTotal: TextView?, value: Int? ) {
+        viewTotal?.text = value?.toString() ?: "-"
     }
 
-    private fun updateTextViewCounter(viewTotalConfirmed1: TextView?, value: String? ) {
-        viewTotalConfirmed1?.text = value ?: "-"
+    private fun updateTextViewCounter(viewTotal: TextView?, value: String? ) {
+        viewTotal?.text = value ?: "-"
     }
 
 

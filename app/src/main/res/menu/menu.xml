@@ -4,7 +4,9 @@
         <item
             android:id="@+id/menu_refresh"
             android:icon="@drawable/loop"
-            android:title="Atualizar dados"
+            android:title="@string/labelDownloadData"
+            android:focusable="true"
+            android:importantForAccessibility="yes"
             app:showAsAction="ifRoom"
             />
 

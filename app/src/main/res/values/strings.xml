@@ -8,12 +8,57 @@
     <string name="cantConnectToHost">Coudn\'t connect to server</string>
     <string name="labelChooseState">Choose State</string>
     <string name="labelStatistics">Covid 19 Bulletin</string>
+    <string name="labelTitleTotalCasesByState">Total cases by State</string>
+
     <string name="labelTitleTotalCasesBrasil">Total cases in Brazil</string>
     <string name="labelTitleTotalCasesWorld">World total cases</string>
+
+    <string name="labelDownloadingData">Loading data</string>
+    <string name="labelDownloadingDataComplete">Data loading complete</string>
+    <string name="labelDownloadData">Download data</string>
+
 
 
     <string name="labelLocal">Local</string>
     <string name="labelConfirmed">Confirmed</string>
     <string name="labelRecovered">Recovered</string>
     <string name="labelDeaths">Deaths</string>
+
+
+    <string name="contentDescriptionItemList">{0}. Confirmed cases: {1}. Total deaths: {2}. Total recovered: {3}</string>
+    <string name="contentDescriptionTotalCasesSummary">Total cases in {0}. Confirmed cases: {1}. Total deaths: {2}. Total recovered: {3}</string>
+    <string name="labelBrazil">Brazil</string>
+    <string name="labelWorld">World</string>
+
+    <string name="noRecordComputed">No record computed.</string>
+
+
+    <string name="labelAC">Acre</string>
+    <string name="labelAL">Alagoas</string>
+    <string name="labelAP">Amapá</string>
+    <string name="labelAM">Amazonas</string>
+    <string name="labelBA">Bahia</string>
+    <string name="labelCE">Ceará</string>
+    <string name="labelDF">Distrito Federal</string>
+    <string name="labelES">Espírito Santo</string>
+    <string name="labelGO">Goiás</string>
+    <string name="labelMA">Maranhão</string>
+    <string name="labelMT">Mato Grosso</string>
+    <string name="labelMS">Mato Grosso do Sul</string>
+    <string name="labelMG">Minas Gerais</string>
+    <string name="labelPA">Pará</string>
+    <string name="labelPB">Paraíba</string>
+    <string name="labelPR">Paraná</string>
+    <string name="labelPE">Pernambuco</string>
+    <string name="labelPI">Piauí</string>
+    <string name="labelRJ">Rio de Janeiro</string>
+    <string name="labelRN">Rio Grande do Norte</string>
+    <string name="labelRS">Rio Grande do Sul</string>
+    <string name="labelRO">Rondônia</string>
+    <string name="labelRR">Roraima</string>
+    <string name="labelSC">Santa Catarina</string>
+    <string name="labelSP">São Paulo</string>
+    <string name="labelSE">Sergipe</string>
+    <string name="labelTO">Tocantins</string>
+
 </resources>
