@@ -1,331 +1,347 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollCasosCovid19"
+    android:id="@+id/mainContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
+    <include layout="@layout/barra_progresso" />
 
 
-    <LinearLayout
+    <ScrollView
+        android:id="@+id/scrollCasosCovid19"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="8dp"
-        android:paddingTop="8dp"
-        android:paddingRight="8dp"
-        android:paddingBottom="8dp">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+       >
 
-        <include layout="@layout/barra_progresso"/>
-
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardResults"
+        <LinearLayout
+            android:id="@+id/container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="6dp">
+            android:orientation="vertical"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingRight="8dp"
+            android:paddingBottom="8dp">
 
-            <LinearLayout
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardResults"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="13dp">
+                android:layout_margin="6dp">
 
-
-                <TextView
-                    android:id="@+id/titleTotalCases"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:focusable="true"
-                    android:importantForAccessibility="yes"
-                    android:text="@string/labelTitleTotalCasesBrasil"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-
-                <View style="@style/horizontalDivider" />
-
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginRight="16dp"
-                    app:hintEnabled="true"
-                    android:hint="@string/labelState"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:orientation="vertical"
+                    android:padding="13dp">
 
 
-                    <jrizani.jrspinner.JRSpinner
-                        android:id="@+id/JRSpinner"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:singleLine="false"
-                        android:textColor="@color/colorPrimary"
+                    <TextView
+                        android:id="@+id/titleTotalCases"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
                         android:focusable="true"
                         android:importantForAccessibility="yes"
-                        app:jrs_multiple="false"
-                        android:contentDescription="@string/labelState"
-                        app:jrs_title="@string/labelChooseState" />
+                        android:text="@string/labelTitleTotalCasesBrasil"
+                        android:textAppearance="?attr/textAppearanceHeadline6" />
 
-                </com.google.android.material.textfield.TextInputLayout>
+                    <View style="@style/horizontalDivider" />
 
 
-                <LinearLayout
-                    android:id="@+id/viewGroupSummaryBrazil"
-                    android:focusable="true"
-                    android:importantForAccessibility="yes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp">
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginRight="16dp"
+                        android:hint="@string/labelState"
+                        app:hintEnabled="true"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+
+                        <jrizani.jrspinner.JRSpinner
+                            android:id="@+id/JRSpinner"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="@string/labelState"
+                            android:focusable="true"
+                            android:importantForAccessibility="yes"
+                            android:singleLine="false"
+                            android:textColor="@color/colorPrimary"
+                            app:jrs_multiple="false"
+                            app:jrs_title="@string/labelChooseState" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/viewGroupSummaryBrazil"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="6dp">
-                        <TextView
+                        android:focusable="true"
+                        android:importantForAccessibility="yes"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/labelConfirmed"
-                            android:focusable="false"
-                            android:importantForAccessibility="no"
-                            android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="?android:attr/textColorSecondary" />
+                            android:orientation="vertical"
+                            android:padding="6dp">
 
-                        <TextView
-                            android:id="@+id/txtTotalConfirmed"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:focusable="false"
+                                android:importantForAccessibility="no"
+                                android:text="@string/labelConfirmed"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary" />
+
+                            <TextView
+                                android:id="@+id/txtTotalConfirmed"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:focusable="false"
+                                android:importantForAccessibility="no"
+                                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+
+                        </LinearLayout>
+
+                        <View style="@style/verticalDivider" />
+
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:focusable="false"
-                            android:importantForAccessibility="no"
-                            android:textAppearance="?attr/textAppearanceHeadline6" />
+                            android:orientation="vertical"
+                            android:padding="6dp">
+                            <!-- Title, secondary and supporting text -->
 
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:focusable="false"
+                                android:importantForAccessibility="no"
+                                android:text="@string/labelRecovered"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary" />
+
+                            <TextView
+                                android:id="@+id/txtTotalRecovered"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:focusable="false"
+                                android:importantForAccessibility="no"
+                                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+
+                        </LinearLayout>
+
+                        <View style="@style/verticalDivider" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="6dp">
+                            <!-- Title, secondary and supporting text -->
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:focusable="false"
+                                android:importantForAccessibility="no"
+                                android:text="@string/labelDeaths"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary" />
+
+                            <TextView
+                                android:id="@+id/txtTotalDeaths"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:focusable="false"
+                                android:importantForAccessibility="no"
+                                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+
+                        </LinearLayout>
 
 
                     </LinearLayout>
 
-                    <View style="@style/verticalDivider" />
+                    <View style="@style/horizontalDivider" />
 
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/titleTotalCasesByState"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="6dp">
-                        <!-- Title, secondary and supporting text -->
+                        android:layout_marginTop="10dp"
+                        android:focusable="true"
+                        android:importantForAccessibility="yes"
+                        android:text="@string/labelTitleTotalCasesByState"
+                        android:textAppearance="?attr/textAppearanceHeadline6" />
 
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/labelRecovered"
-                            android:focusable="false"
-                            android:importantForAccessibility="no"
-                            android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="?android:attr/textColorSecondary" />
+                    <View style="@style/horizontalDivider" />
 
-                        <TextView
-                            android:id="@+id/txtTotalRecovered"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:focusable="false"
-                            android:importantForAccessibility="no"
-                            android:textAppearance="?attr/textAppearanceHeadline6" />
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
 
-
-                    </LinearLayout>
-                    <View style="@style/verticalDivider" />
-                    <LinearLayout
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="6dp">
-                        <!-- Title, secondary and supporting text -->
+                        android:importantForAccessibility="no">
 
-                        <TextView
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvResultadosCovid19"
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/labelDeaths"
-                            android:focusable="false"
-                            android:importantForAccessibility="no"
-                            android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="?android:attr/textColorSecondary" />
-
-                        <TextView
-                            android:id="@+id/txtTotalDeaths"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:focusable="false"
-                            android:importantForAccessibility="no"
-                            android:textAppearance="?attr/textAppearanceHeadline6" />
-
-
-
-                    </LinearLayout>
-
+                            android:layout_height="match_parent" />
+                    </HorizontalScrollView>
 
                 </LinearLayout>
-                <View style="@style/horizontalDivider"/>
 
-                <TextView
-                    android:id="@+id/titleTotalCasesByState"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:focusable="true"
-                    android:importantForAccessibility="yes"
-                    android:text="@string/labelTitleTotalCasesByState"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-
-                <View style="@style/horizontalDivider" />
-
-                <HorizontalScrollView
-                    android:importantForAccessibility="no"
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rvResultadosCovid19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                  />
-                </HorizontalScrollView>
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardResultsWorld"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="6dp">
-
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardResultsWorld"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="13dp">
-
-                <TextView
-                    android:id="@+id/titleTotalWorldCases"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:focusable="true"
-                    android:importantForAccessibility="yes"
-                    android:text="@string/labelTitleTotalCasesWorld"
-                    android:textAppearance="?attr/textAppearanceHeadline6" />
-
-                <View style="@style/horizontalDivider" />
-
+                android:layout_margin="6dp">
 
                 <LinearLayout
-                    android:id="@+id/viewGroupSummaryWorld"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:padding="12dp"
-                    android:focusable="true"
-                    android:importantForAccessibility="yes"
+                    android:orientation="vertical"
+                    android:padding="13dp">
 
-                    >
-
-                    <LinearLayout
+                    <TextView
+                        android:id="@+id/titleTotalWorldCases"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="6dp">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/labelConfirmed"
-                            android:focusable="false"
-                            android:importantForAccessibility="no"
-                            android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="?android:attr/textColorSecondary" />
+                        android:layout_marginTop="8dp"
+                        android:focusable="true"
+                        android:importantForAccessibility="yes"
+                        android:text="@string/labelTitleTotalCasesWorld"
+                        android:textAppearance="?attr/textAppearanceHeadline6" />
 
-                        <TextView
-                            android:id="@+id/txtTotalConfirmedWorld"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:focusable="false"
-                            android:importantForAccessibility="no"
-                            android:textAppearance="?attr/textAppearanceHeadline6" />
-
-
-
-                    </LinearLayout>
-
-                    <View style="@style/verticalDivider" />
+                    <View style="@style/horizontalDivider" />
 
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:id="@+id/viewGroupSummaryWorld"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="6dp">
-                        <!-- Title, secondary and supporting text -->
+                        android:focusable="true"
+                        android:importantForAccessibility="yes"
+                        android:orientation="horizontal"
+                        android:padding="12dp"
 
-                        <TextView
+                        >
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/labelRecovered"
-                            android:focusable="false"
-                            android:importantForAccessibility="no"
-                            android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="?android:attr/textColorSecondary" />
+                            android:orientation="vertical"
+                            android:padding="6dp">
 
-                        <TextView
-                            android:id="@+id/txtTotalRecoveredWorld"
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:focusable="false"
+                                android:importantForAccessibility="no"
+                                android:text="@string/labelConfirmed"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary" />
+
+                            <TextView
+                                android:id="@+id/txtTotalConfirmedWorld"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:focusable="false"
+                                android:importantForAccessibility="no"
+                                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+
+                        </LinearLayout>
+
+                        <View style="@style/verticalDivider" />
+
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:focusable="false"
-                            android:importantForAccessibility="no"
-                            android:textAppearance="?attr/textAppearanceHeadline6" />
+                            android:orientation="vertical"
+                            android:padding="6dp">
+                            <!-- Title, secondary and supporting text -->
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:focusable="false"
+                                android:importantForAccessibility="no"
+                                android:text="@string/labelRecovered"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary" />
+
+                            <TextView
+                                android:id="@+id/txtTotalRecoveredWorld"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:focusable="false"
+                                android:importantForAccessibility="no"
+                                android:textAppearance="?attr/textAppearanceHeadline6" />
 
 
-                    </LinearLayout>
-                    <View style="@style/verticalDivider" />
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:padding="6dp">
-                        <!-- Title, secondary and supporting text -->
+                        </LinearLayout>
 
-                        <TextView
+                        <View style="@style/verticalDivider" />
+
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/labelDeaths"
-                            android:focusable="false"
-                            android:importantForAccessibility="no"
-                            android:textAppearance="?attr/textAppearanceBody2"
-                            android:textColor="?android:attr/textColorSecondary" />
+                            android:orientation="vertical"
+                            android:padding="6dp">
+                            <!-- Title, secondary and supporting text -->
 
-                        <TextView
-                            android:id="@+id/txtTotalDeathsWorld"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:focusable="false"
-                            android:importantForAccessibility="no"
-                            android:textAppearance="?attr/textAppearanceHeadline6" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:focusable="false"
+                                android:importantForAccessibility="no"
+                                android:text="@string/labelDeaths"
+                                android:textAppearance="?attr/textAppearanceBody2"
+                                android:textColor="?android:attr/textColorSecondary" />
 
+                            <TextView
+                                android:id="@+id/txtTotalDeathsWorld"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:focusable="false"
+                                android:importantForAccessibility="no"
+                                android:textAppearance="?attr/textAppearanceHeadline6" />
+
+
+                        </LinearLayout>
 
 
                     </LinearLayout>
@@ -333,12 +349,11 @@
 
                 </LinearLayout>
 
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
+            </com.google.android.material.card.MaterialCardView>
 
 
-    </LinearLayout>
+        </LinearLayout>
 
-</ScrollView>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

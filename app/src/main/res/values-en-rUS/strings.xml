@@ -26,10 +26,10 @@
 
     <string name="contentDescriptionItemList">{0}. Confirmed cases: {1}. Total deaths: {2}. Total recovered: {3}</string>
     <string name="contentDescriptionTotalCasesSummary">Total cases in {0}. Confirmed cases: {1}. Total deaths: {2}. Total recovered: {3}</string>
-    <string name="labelBrazil">Brasil</string>
-    <string name="labelWorld">Mundo</string>
+    <string name="labelBrazil">Brazil</string>
+    <string name="labelWorld">World</string>
 
-    <string name="noRecordComputed">No record computed.</string>
+    <string name="noRecordComputed">No records available.</string>
 
     <string name="labelAC">Acre</string>
     <string name="labelAL">Alagoas</string>
