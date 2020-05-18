@@ -55,7 +55,9 @@
                         android:focusable="true"
                         android:importantForAccessibility="yes"
                         android:text="@string/labelTitleTotalCasesBrasil"
-                        android:textAppearance="?attr/textAppearanceHeadline6" />
+                        android:textAppearance="?attr/textAppearanceHeadline6"
+                        android:textColor="@color/colorPrimary"
+                        />
 
                     <View style="@style/horizontalDivider" />
 
@@ -81,7 +83,7 @@
                             android:focusable="true"
                             android:importantForAccessibility="yes"
                             android:singleLine="false"
-                            android:textColor="@color/colorPrimary"
+
                             app:jrs_multiple="false"
                             app:jrs_title="@string/labelChooseState" />
 
@@ -91,7 +93,7 @@
                     <LinearLayout
                         android:id="@+id/viewGroupSummaryBrazil"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:focusable="true"
                         android:importantForAccessibility="yes"
                         android:orientation="horizontal"
@@ -101,7 +103,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="6dp">
+                            android:padding="6dp"
+                            android:layout_weight=".33">
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -110,7 +113,9 @@
                                 android:importantForAccessibility="no"
                                 android:text="@string/labelConfirmed"
                                 android:textAppearance="?attr/textAppearanceBody2"
-                                android:textColor="?android:attr/textColorSecondary" />
+                                android:textColor="?android:attr/textColorSecondary"
+
+                                />
 
                             <TextView
                                 android:id="@+id/txtTotalConfirmed"
@@ -126,12 +131,13 @@
 
                         <View style="@style/verticalDivider" />
 
-
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="6dp">
+                            android:padding="6dp"
+                            android:layout_weight=".33"
+                            >
                             <!-- Title, secondary and supporting text -->
 
                             <TextView
@@ -161,8 +167,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="6dp">
-                            <!-- Title, secondary and supporting text -->
+                            android:padding="6dp"
+                            android:layout_weight=".33"
+                            >
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -198,6 +205,7 @@
                         android:focusable="true"
                         android:importantForAccessibility="yes"
                         android:text="@string/labelTitleTotalCasesByState"
+                        android:textColor="@color/colorPrimary"
                         android:textAppearance="?attr/textAppearanceHeadline6" />
 
                     <View style="@style/horizontalDivider" />
@@ -239,6 +247,7 @@
                         android:focusable="true"
                         android:importantForAccessibility="yes"
                         android:text="@string/labelTitleTotalCasesWorld"
+                        android:textColor="@color/colorPrimary"
                         android:textAppearance="?attr/textAppearanceHeadline6" />
 
                     <View style="@style/horizontalDivider" />
@@ -247,7 +256,7 @@
                     <LinearLayout
                         android:id="@+id/viewGroupSummaryWorld"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:focusable="true"
                         android:importantForAccessibility="yes"
                         android:orientation="horizontal"
@@ -259,7 +268,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="6dp">
+                            android:padding="6dp"
+                            android:layout_weight=".33"
+                            >
 
                             <TextView
                                 android:layout_width="wrap_content"
@@ -289,7 +300,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="6dp">
+                            android:padding="6dp"
+                            android:layout_weight=".33"
+                            >
                             <!-- Title, secondary and supporting text -->
 
                             <TextView
@@ -319,7 +332,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
-                            android:padding="6dp">
+                            android:padding="6dp"
+                            android:layout_weight=".33"
+                            >
                             <!-- Title, secondary and supporting text -->
 
                             <TextView
